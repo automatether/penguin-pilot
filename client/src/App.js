@@ -1,5 +1,5 @@
 import "./App.css";
-import { ChartComponent } from "./Graph1";
+import { ConsumptionGraph } from "./ConsumptionGraph";
 import { ChartComponent2 } from "./Graph2";
 import { ChartComponent3 } from "./Graph3";
 
@@ -18,7 +18,7 @@ function App() {
         <div id="left-side">
           <h2>Graphs for energy stuff</h2>
           <div id="charts-container">
-            <ChartComponent />
+            <ConsumptionGraph />
             <ChartComponent2 />
             <ChartComponent3 />
           </div>
