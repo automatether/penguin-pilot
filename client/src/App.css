@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,8 +37,38 @@
   }
 }
 
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 2px;
+.Split-Screen {
+  /*this is the main container, where the left and right side are placed in a grid*/
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
 }
+
+.leftSide {
+  /*this is the left side of the page, where the chartscontainer is*/
+  width: 50%;
+  height: 95vh;
+  background-color: #282c34;
+  display: flex;
+  justify-content: center;
+}
+
+.chartsContainer {
+  /*here we show the 3 charts in a column, spread evenly and centered.*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 95vh;
+}
+
+.rightSide {
+  /*this is the right side of the page, where the tablecontainer is*/
+  width: 50%;
+  height: 95vh;
+  background-color: #282c34;
+  display: flex;
+  justify-content: center;
+}
+
