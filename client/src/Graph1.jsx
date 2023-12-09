@@ -10,7 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
+import mockData from "./mockData/data.json";
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +22,23 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+//for data we get from data.json file, we map each point to a label ranging from 0 to 100
+const labels = mockData["power consumption"].map((_, index) => index / 10);
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: "power consumption",
+      data: mockData["power consumption"],
+      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+    },
+    mockData["power consumption"],
+  ],
+};
+
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -33,26 +49,24 @@ export const options = {
       text: "Chart.js",
     },
   },
-};
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
+  scales: {
+    x: {
+      type: "linear",
+      position: "bottom",
+      title: {
+        display: true,
+        text: "Percent of Route",
+      },
     },
-    {
-      label: "Dataset 2",
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
+    y: {
+      type: "linear",
+      position: "left",
+      title: {
+        display: true,
+        text: "Energy (MWh)",
+      },
     },
-  ],
+  },
 };
 
 export function ChartComponent() {

@@ -9,6 +9,7 @@ function App() {
       <header className="App-header">
         <h1>Binary Buccaneers' App</h1>
         <div id="nav-bar">
+          <a href="index.html">Switch between views</a>
           <a href="description.html">Description</a>
           <a href="video.html">Video Presentation</a>
         </div>

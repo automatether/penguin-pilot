@@ -31,7 +31,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 17vw;
+  width: 25vw;
 }
 
 a {
@@ -76,7 +76,7 @@ a {
 
 #canvas-element {
   /*this is the canvas where the charts are drawn*/
-  background-color: #3d4759;
+  background-color: #282c34;
   height: 20vh;
   width: 20vw;
 }
