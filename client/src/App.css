@@ -1,32 +1,20 @@
 .App {
+  background-color: #282c34;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 5vh;
+  /*this is the header, where we show the name of the app at the very left and the nav elements at the very right*/
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  background-color: #282c34;
+  margin: 0 20px 0 20px;
+  min-height: 5vh;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -40,16 +28,15 @@
 .Split-Screen {
   /*this is the main container, where the left and right side are placed in a grid*/
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  height: 100vh;
+  grid-template-columns: 65% 35%;
+  grid-template-rows: 100%;
+  height: 95vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .leftSide {
   /*this is the left side of the page, where the chartscontainer is*/
-  width: 50%;
-  height: 95vh;
-  background-color: #282c34;
   display: flex;
   justify-content: center;
 }
@@ -63,12 +50,24 @@
   height: 95vh;
 }
 
+#canvas-element {
+  /*this is the canvas where the charts are drawn*/
+  background-color: #3d4759;
+  height: 20vh;
+  width: 20vw;
+}
+
 .rightSide {
   /*this is the right side of the page, where the tablecontainer is*/
-  width: 50%;
-  height: 95vh;
-  background-color: #282c34;
   display: flex;
   justify-content: center;
 }
 
+.eventsContainer {
+  /*here we show the table in a column, spread evenly and centered.*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 95vh;
+}

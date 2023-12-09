@@ -4,25 +4,28 @@ import { ChartComponent } from "./EnergyStorageGraph";
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
-      <body className="App-body">
-        <div className="Split-Screen">
-          <div id="leftSide">
-            <h1>Graphs for energy stuff</h1>
-            <div id="chartsContainer">
-              <ChartComponent />
-              <ChartComponent />
-              <ChartComponent />
-            </div>
-          </div>
-          <div id="rightSide">
-            <div id="eventLogContainer">
-              <h2>Event Log</h2>
-              <div id="eventsAndAnomalies"></div>
-            </div>
+      <header className="App-header">
+        <h1>Binary Buccaneers' App</h1>
+        <div id="navElements">
+          <a href="description.html">Description</a>
+        </div>
+      </header>
+      <div className="Split-Screen">
+        <div id="leftSide">
+          <h2>Graphs for energy stuff</h2>
+          <div id="chartsContainer">
+            <ChartComponent />
+            <ChartComponent />
+            <ChartComponent />
           </div>
         </div>
-      </body>
+        <div id="rightSide">
+          <div id="eventsContainer">
+            <h2>Event Log</h2>
+            <div id="eventsAndAnomalies"></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

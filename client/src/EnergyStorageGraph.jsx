@@ -56,5 +56,5 @@ export const data = {
 };
 
 export function ChartComponent() {
-  return <Line options={options} data={data} />;
+  return <Line options={options} data={data} id="canvas-element" />;
 }
