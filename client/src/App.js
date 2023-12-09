@@ -1,28 +1,31 @@
 import "./App.css";
-import { ChartComponent } from "./EnergyStorageGraph";
+import { ChartComponent } from "./Graph1";
+import { ChartComponent2 } from "./Graph2";
+import { ChartComponent3 } from "./Graph3";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <h1>Binary Buccaneers' App</h1>
-        <div id="navElements">
+        <div id="nav-bar">
           <a href="description.html">Description</a>
+          <a href="video.html">Video Presentation</a>
         </div>
       </header>
       <div className="Split-Screen">
-        <div id="leftSide">
+        <div id="left-side">
           <h2>Graphs for energy stuff</h2>
-          <div id="chartsContainer">
+          <div id="charts-container">
             <ChartComponent />
-            <ChartComponent />
-            <ChartComponent />
+            <ChartComponent2 />
+            <ChartComponent3 />
           </div>
         </div>
-        <div id="rightSide">
-          <div id="eventsContainer">
+        <div id="right-side">
+          <div id="events-container">
             <h2>Event Log</h2>
-            <div id="eventsAndAnomalies"></div>
+            <div id="events-and-anomalies"></div>
           </div>
         </div>
       </div>
