@@ -1,97 +1,124 @@
 .App {
-  background-color: #282c34;
-  text-align: center;
+    background-color: #282c34;
+    text-align: center;
 }
 
 .App-header {
-  /*this is the header, where we show the name of the app at the very left and the nav elements at the very right*/
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #282c34;
-  margin: 0 20px 0 20px;
-  min-height: 5vh;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    /*this is the header, where we show the name of the app at the very left and the nav elements at the very right*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #282c34;
+    margin: 0 20px 0 20px;
+    min-height: 5vh;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem; /* Footer height */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem; /* Footer height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+}
+
+p {
+    /*this is the text in the footer*/
+    margin: 0;
+    color: white;
+    font-size: small;
 }
 
 h1 {
-  /*this is the name of the app*/
-  font-size: xx-large;
+    /*this is the name of the app*/
+    font-size: xx-large;
 }
 
 h2 {
-  /*this is the name of the page*/
-  font-size: x-large;
+    /*this is the name of the page*/
+    font-size: x-large;
 }
 
 #nav-bar {
-  /*this is the nav element, where we show the links to the different pages*/
-  /*the links are shown in a row, with a space between them*/
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 25vw;
+    /*this is the nav element, where we show the links to the different pages*/
+    /*the links are shown in a row, with a space between them*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25vw;
 }
 
 a {
-  /*this is the style of the links in the nav element*/
-  color: white;
-  font-size: large;
-  text-decoration: underline;
+    /*this is the style of the links in the nav element*/
+    color: white;
+    font-size: large;
+    text-decoration: underline;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .Split-Screen {
-  /*this is the main container, where the left and right side are placed in a grid*/
-  display: grid;
-  grid-template-columns: 65% 35%;
-  grid-template-rows: 100%;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    /*this is the main container, where the left and right side are placed in a grid*/
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 100%;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .left-side {
-  /*this is the left side of the page, where the chartscontainer is*/
-  display: flex;
-  justify-content: center;
+    /*this is the left side of the page, where the chartscontainer is*/
+    display: flex;
+    justify-content: center;
 }
 
 .charts-container {
-  /*here we show the 3 charts in a column, spread evenly and centered.*/
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 95vh;
+    /*here we show the 3 charts in a column, spread evenly and centered.*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 95vh;
 }
 
 #canvas-element {
-  /*this is the canvas where the charts are drawn*/
-  background-color: #282c34;
-  height: 20vh;
-  width: 20vw;
+    /*this is the canvas where the charts are drawn*/
+    background-color: #282c34;
+    height: 20vh;
+    width: 20vw;
 }
 
 .right-side {
-  /*this is the right side of the page, where the tablecontainer is*/
-  display: flex;
-  justify-content: center;
+    /*this is the right side of the page, where the tablecontainer is*/
+    display: flex;
+    justify-content: center;
 }
 
 .events-container {
-  /*here we show the table in a column, spread evenly and centered.*/
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 95vh;
+    /*here we show the table in a column, spread evenly and centered.*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 95vh;
 }
