@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { EnergyStorageGraph } from "./components/EnergyStorageGraph";
+import { ChartComponent } from "./EnergyStorageGraph";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <EnergyStorageGraph />
+        <ChartComponent />
       </header>
     </div>
   );
