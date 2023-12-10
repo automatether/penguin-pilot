@@ -10,63 +10,97 @@ import {
     Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import storageAndSurplusData from "../mockData/production_storage.json";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
 const downsampleData = (originalData, factor = 10) => {
     const result = [];
     for (let i = 0; i < originalData.length; i += factor) {
         const chunk = originalData.slice(i, i + factor);
-        const average = chunk.reduce((sum, value) => sum + value, 0) / chunk.length;
+        const average =
+            chunk.reduce((sum, value) => sum + value, 0) / chunk.length;
         result.push(average);
     }
     return result;
 };
 
 const StorageAndSurplusGraph = () => {
-    const optimalStorage = Array.from({ length: 1000 }, () => 1000);
-    const storage = Array.from({ length: 1000 }, () => 871);
     const totalPoints = 1000;
-    const [dynamicData, setDynamicData] = useState(Array.from({ length: 100 }, (_, index) => storage[index]));
+    const engineCount = storageAndSurplusData["engines running"];
+    const [dynamicEngineCount, setDynamicEngineCount] = useState(
+        Array.from({ length: 100 }, (_, index) => engineCount[index])
+    );
+    const energyProduction = storageAndSurplusData["energy production"];
+    const [dynamicEnergyProduction, setDynamicEnergyProduction] = useState(
+        Array.from({ length: 100 }, (_, index) => energyProduction[index])
+    );
+    const batteryPercentage = storageAndSurplusData["battery percentage"];
+    const [dynamicBatteryPercentage, setDynamicBatteryPercentage] = useState(
+        Array.from({ length: 100 }, (_, index) => batteryPercentage[index])
+    );
     const labels = Array.from({ length: totalPoints }, (_, index) => index);
-    console.log("total points: ", storage);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setDynamicData((oldData) => {
+            setDynamicEngineCount((oldData) => {
                 if (oldData.length >= totalPoints) {
                     clearInterval(interval);
                     return oldData;
                 }
-                // here we determine the current position of the ship on the route (percentages/100)
-                // the added data
-                const newDataPoint = storage[oldData.length];
-                return [...oldData, newDataPoint]; // Directly adding the final value of the new data point
+                const newDataPoint = engineCount[oldData.length];
+                return [...oldData, newDataPoint];
+            });
+            setDynamicEnergyProduction((oldData) => {
+                if (oldData.length >= totalPoints) {
+                    clearInterval(interval);
+                    return oldData;
+                }
+                const newDataPoint = energyProduction[oldData.length];
+                return [...oldData, newDataPoint];
+            });
+            setDynamicBatteryPercentage((oldData) => {
+                if (oldData.length >= totalPoints) {
+                    clearInterval(interval);
+                    return oldData;
+                }
+                const newDataPoint = batteryPercentage[oldData.length];
+                return [...oldData, newDataPoint];
             });
         }, 1000); // Adjust this value as needed for generation frequency
         return () => clearInterval(interval);
     }, []); // eslint-disable-line
 
-    // here we determine the current position of the ship on the route (percentages/100)
-    // the current difference to the forecasted power consumption
-    // and use that to display the color coded dynamic line
-    const latestIndex = dynamicData.length - 1;
-    const latestDifference = dynamicData[latestIndex] - optimalStorage[latestIndex];
-    const dynamicBorderColor = latestDifference > 0 ? "green" : "red";
-
     const data = {
         labels,
         datasets: [
             {
-                label: "Dynamic Storage",
-                data: downsampleData(dynamicData),
-                borderColor: dynamicBorderColor,
+                label: "Engine Count",
+                data: downsampleData(dynamicEngineCount),
+                borderColor: "red",
+                yAxisID: "percentage",
                 backgroundColor: "rgba(255, 99, 132, 0.5)",
             },
             {
-                label: "Optimal Storage",
-                data: downsampleData(optimalStorage),
-                borderColor: "rgb(255, 99, 132)",
+                label: "Energy Production",
+                data: downsampleData(dynamicEnergyProduction),
+                borderColor: "yellow",
+                yAxisID: "energy",
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+            },
+            {
+                label: "Energy Storage Percentage",
+                data: downsampleData(dynamicBatteryPercentage),
+                borderColor: "green",
+                yAxisID: "percentage",
                 backgroundColor: "rgba(255, 99, 132, 0.5)",
             },
         ],
@@ -83,7 +117,7 @@ const StorageAndSurplusGraph = () => {
             },
             title: {
                 display: true,
-                text: `Energy surplus and storage (Latest Difference: ${latestDifference.toFixed(2)})`,
+                text: `Energy Production (MWh) and Storage (%)`,
             },
         },
         scales: {
@@ -105,17 +139,22 @@ const StorageAndSurplusGraph = () => {
                     display: true,
                     text: "Energy (MWh)",
                 },
+                id: "energy",
+            },
+            percentage: {
+                type: "linear",
+                position: "right",
+                title: {
+                    display: true,
+                    text: "Percentage",
+                },
+                suggestedMax: 100,
+                id: "percentage",
             },
         },
     };
 
-    return (
-        <Line
-            options={options}
-            data={data}
-            id="canvas-element"
-        />
-    );
+    return <Line options={options} data={data} id="canvas-element" />;
 };
 
 export { StorageAndSurplusGraph };
