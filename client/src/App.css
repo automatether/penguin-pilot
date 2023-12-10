@@ -17,7 +17,7 @@
     position: fixed;
     top: 0;
     width: 100%; /* Set width to 100% to span the entire viewport */
-    height: 5rem;
+    height: 6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

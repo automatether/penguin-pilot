@@ -15,7 +15,7 @@ function App() {
                 alt="logo"
                 id="logo"
               />
-              <h1>Binary Buccaneers' App</h1>
+              <h1>Penguin Pilot</h1>
             </div>
             <div id="nav-bar">
               <a href="index.html">Switch between views</a>
