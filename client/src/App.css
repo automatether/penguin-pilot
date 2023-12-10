@@ -23,8 +23,25 @@
     align-items: center;
     background-color: #3a3f48;
     padding: 0 20px;
-    font-size: calc(10px + 2vmin);
     color: white;
+}
+
+.logo-and-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+}
+
+#logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 4rem;
+    pointer-events: none;
+}
+
+h1 {
+    /*this is the name of the app*/
+    font-size: xx-large;
 }
 
 #nav-bar {
@@ -51,11 +68,6 @@ p {
     margin: 0;
     color: white;
     font-size: small;
-}
-
-h1 {
-    /*this is the name of the app*/
-    font-size: xx-large;
 }
 
 h2 {
