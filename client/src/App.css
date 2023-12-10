@@ -3,25 +3,36 @@
     text-align: center;
 }
 
-.App-header {
-    /*this is the header, where we show the name of the app at the very left and the nav elements at the very right*/
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #282c34;
-    margin: 0 20px 0 20px;
-    min-height: 5vh;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
 #page-container {
     position: relative;
     min-height: 100vh;
 }
 
 #content-wrap {
+    padding-top: 5rem; /* Header height */
     padding-bottom: 2.5rem; /* Footer height */
+}
+
+.App-header {
+    position: fixed;
+    top: 0;
+    width: 100%; /* Set width to 100% to span the entire viewport */
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3a3f48;
+    padding: 0 20px;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+#nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+    margin-right: 20px; /* Adjust the margin as needed to move the navbar to the right */
 }
 
 #footer {
@@ -50,15 +61,6 @@ h1 {
 h2 {
     /*this is the name of the page*/
     font-size: x-large;
-}
-
-#nav-bar {
-    /*this is the nav element, where we show the links to the different pages*/
-    /*the links are shown in a row, with a space between them*/
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 25vw;
 }
 
 a {
@@ -104,6 +106,7 @@ a {
 #canvas-element {
     /*this is the canvas where the charts are drawn*/
     background-color: #282c34;
+    margin: 0 30px 30px 30px;
     height: 20vh;
     width: 20vw;
 }
