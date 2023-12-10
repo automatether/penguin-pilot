@@ -25,7 +25,7 @@ const downsampleData = (originalData, factor = 10) => {
     return result;
 };
 
-const ConsumptionGraph = () => {
+const ConsumptionGraph = ({difference, setDifferenceCallback}) => {
     const forecastData = mockForecastData["forecasted consumption"];
     const liveData = mockLiveData["total consumption"];
     const totalPoints = forecastData.length;
@@ -54,6 +54,10 @@ const ConsumptionGraph = () => {
     const latestIndex = dynamicData.length - 1;
     const latestDifference = dynamicData[latestIndex] - forecastData[latestIndex];
     const dynamicBorderColor = latestDifference > 0 ? "red" : "green";
+
+    useEffect(() => {
+        setDifferenceCallback(latestDifference.toFixed(2), dynamicData[latestIndex].toFixed(2), forecastData[latestIndex].toFixed(2))
+    }, [dynamicData, latestDifference, setDifferenceCallback])
 
     const data = {
         labels,
